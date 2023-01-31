@@ -1,0 +1,134 @@
+1.Given two strings, return true if either of the strings appears at the very end of the other string, ignoring upper/lower case differences (in other words, the computation should not be "case sensitive"). Note: str.toLowerCase() returns the lowercase version of a string.
+
+public boolean endOther(String a, String b) {
+  a=a.toLowerCase();
+  b=b.toLowerCase();
+  int n;
+  if(a.length()>=b.length()){
+    n=b.length();
+    if(b.substring(0,n).equals(a.substring(a.length()-n,a.length())))
+      return true;
+    else
+      return false;
+  }
+  else{
+    n=a.length();
+    if(a.substring(0,n).equals(b.substring(b.length()-n,b.length())))
+      return true;
+    else
+      return false;
+  }
+}
+
+
+
+2.Given a string, return a string where for every char in the original, there are two chars.
+
+public String doubleChar(String str) {
+  String a="";
+  for(int i=0;i<str.length();i++){
+    a=a+str.substring(i,i+1);
+    a=a+str.substring(i,i+1);
+  }
+  return a;
+}
+
+
+3.Return the number of times that the string "hi" appears anywhere in the given string.
+
+public int countHi(String str) {
+  int count=0;
+  for(int i=0;i<str.length()-1;i++){
+    if(str.substring(i,i+2).equals("hi"))
+    count+=1;
+  }
+  return count;
+}
+
+
+4.Given an array of ints, return true if the array contains no 1's and no 3's.
+
+public boolean lucky13(int[] nums) {
+  int one=0,three=0;
+  for(int i=0;i<nums.length;i++){
+    if(nums[i]==1){
+      one+=1;
+    }
+    if(nums[i]==3){
+      three+=1;
+    }
+  }
+  if(one==0 && three==0)
+  return true;
+  else
+  return false;
+}
+
+5.Return the number of even ints in the given array. Note: the % "mod" operator computes the remainder, e.g. 5 % 2 is 1.
+
+public int countEvens(int[] nums) {
+  int count=0;
+  for(int i=0;i<nums.length;i++){
+    if(nums[i]%2==0){
+      count+=1;
+    }
+  }
+  return count;
+}
+
+
+6.Given arrays nums1 and nums2 of the same length, for every element in nums1, consider the corresponding element in nums2 (at the same index). Return the count of the number of times that the two elements differ by 2 or less, but are not equal.
+
+public int matchUp(int[] nums1, int[] nums2) {
+  int count=0;
+  for(int i=0;i<nums1.length;i++){
+    if(nums1[i]-nums2[i]==2 || nums2[i]-nums1[i]==2 || nums1[i]-nums2[i]==1 || nums2[i]-nums1[i]==1){
+      count+=1;
+    }
+  }
+  return count;
+}
+
+7.Given a list of strings, return a list of the strings, omitting any string length 3 or 4.
+
+public List<String> no34(List<String> strings) {
+  strings.removeIf(n -> n.length()==3 || n.length()==4 );
+  return strings;
+ 
+}
+
+8.Modify and return the given map as follows: if the key "a" has a value, set the key "b" to have that value, and set the key "a" to have the value "". Basically "b" is a bully, taking the value and replacing it with the empty string.
+
+public Map<String, String> mapBully(Map<String, String> map) {
+  if(map.get("a")!=null){
+    map.put("b",map.get("a"));
+    map.put("a","");
+  }
+  return map;
+}
+
+9.Modify and return the given map as follows: if the key "a" has a value, set the key "b" to have that same value. In all cases remove the key "c", leaving the rest of the map unchanged.
+
+public Map<String, String> mapShare(Map<String, String> map) {
+  if(map.get("a")!=null){
+    if(map.get("b")!=null){
+      map.put("b",map.get("a"));
+    }
+    if(map.get("b")==null){
+      map.put("b",map.get("a"));
+    }
+  }
+  map.remove("c");
+  return map;
+}
+
+10.Modify and return the given map as follows: for this problem the map may or may not contain the "a" and "b" keys. If both keys are present, append their 2 string values together and store the result under the key "ab".
+
+public Map<String, String> mapAB(Map<String, String> map) {
+  if(map.get("a")!= null && map.get("b")!=null){
+    String str=map.get("a")+map.get("b");
+    map.put("ab",str);
+  }
+  return map;
+}
+
